@@ -1,12 +1,12 @@
 {
-  "name": "abhi1693/yii2-system-info",
+  "name": "kingzeus/yii2-system-info",
   "description": "Information about the server",
   "license": "MIT",
   "authors": [
     {
-      "name": "Abhimanyu Saharan",
-      "email": "abhimanyu@teamvulcans.com",
-      "homepage": "http://abhi1693.github.io/yii2-system-info"
+      "name": "Yefei Fan",
+      "email": "fyfcnc@hotmail.ocm",
+      "homepage": "github.com/kingzeus/yii2-system-info"
     }
   ],
   "require": {
@@ -14,6 +14,6 @@
     "yiisoft/yii2": "*"
   },
   "autoload": {
-    "psr-4": {"abhimanyu\\systemInfo\\": ""}
+    "psr-4": {"kingzeus\\systemInfo\\": ""}
   }
 }
