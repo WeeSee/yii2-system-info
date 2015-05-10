@@ -1,4 +1,11 @@
-v1.0.1 [Work in progress]
+v1.0.2
+-------------------------
+
+- osx support
+- Added base class
+
+
+v1.0.1
 -------------------------
 
 - Changed composer install path to yii2-system-info
