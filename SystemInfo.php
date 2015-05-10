@@ -6,9 +6,9 @@
 	 * Time: 22:19
 	 */
 
-	namespace abhimanyu\systemInfo;
+	namespace kingzeus\systemInfo;
 
-	use abhimanyu\systemInfo\interfaces\InfoInterface;
+	use kingzeus\systemInfo\interfaces\InfoInterface;
 
 	class SystemInfo
 	{
@@ -23,7 +23,11 @@
 				return __NAMESPACE__ . '\os\Windows';
 			} elseif (strpos($name, 'linux') !== FALSE) {
 				return __NAMESPACE__ . '\os\Linux';
+			} elseif (strpos($name, 'darwin') !== FALSE) {
+				return __NAMESPACE__ . '\os\Darwin';
 			}
+			//
+
 
 			return NULL;
 		}

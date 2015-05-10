@@ -6,14 +6,14 @@
 	 * Time: 22:24
 	 */
 
-	namespace abhimanyu\systemInfo\os;
+	namespace kingzeus\systemInfo\os;
 
 	use abhimanyu\systemInfo\interfaces\InfoInterface;
 	use Exception;
 	use PDO;
 	use Yii;
 
-	class Windows implements InfoInterface
+	class Windows extends Base
 	{
 		/**
 		 * Gets the name of the Operating System
@@ -221,45 +221,13 @@
 			return $cores;
 		}
 
-		/**
-		 * Gets Current PHP Version
-		 *
-		 * @return string
-		 */
-		public static function getPhpVersion()
-		{
-			return phpversion();
-		}
 
-		/**
-		 * Gets Server Name
-		 *
-		 * @return string
-		 */
-		public static function getServerName()
-		{
-			return $_SERVER['SERVER_NAME'];
-		}
 
-		/**
-		 * Gets Server Protocol
-		 *
-		 * @return string
-		 */
-		public static function getServerProtocol()
-		{
-			return $_SERVER['SERVER_PROTOCOL'];
-		}
 
-		/**
-		 * Gets the type of server e.g. apache
-		 *
-		 * @return string
-		 */
-		public static function getServerSoftware()
-		{
-			return $_SERVER['SERVER_SOFTWARE'];
-		}
+
+
+
+
 
 		/**
 		 * Gets total physical memory
@@ -277,30 +245,7 @@
 			return NULL;
 		}
 
-		/**
-		 * Gets the current DB Type of Yii2
-		 *
-		 * @return mixed
-		 */
-		public static function getDbType()
-		{
-			return Yii::$app->db->driverName;
-		}
 
-		/**
-		 * * Gets the current DB Version of Yii2
-		 *
-		 * @return mixed
-		 */
-		public static function getDbVersion()
-		{
-			try {
-				// Open Connection if closed
-				Yii::$app->db->open();
-			} catch (Exception $e) {
-				//ignore
-			}
 
-			return Yii::$app->db->pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
-		}
+
 	}

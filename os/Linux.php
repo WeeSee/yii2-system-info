@@ -6,14 +6,14 @@
 	 * Time: 00:06
 	 */
 
-	namespace abhimanyu\systemInfo\os;
+	namespace kingzeus\systemInfo\os;
 
 	use abhimanyu\systemInfo\interfaces\InfoInterface;
 	use Exception;
 	use PDO;
 	use Yii;
 
-	class Linux implements InfoInterface
+	class Linux extends Base
 	{
 		public function __construct()
 		{
@@ -41,15 +41,7 @@
 			return shell_exec('/usr/bin/lsb_release -ds');
 		}
 
-		/**
-		 * Gets the hostname
-		 *
-		 * @return string
-		 */
-		public static function getHostname()
-		{
-			return php_uname('n');
-		}
+
 
 		/**
 		 * Gets Processor's Model
@@ -194,45 +186,8 @@
 			return Linux::getCpuInfo()['Cores'];
 		}
 
-		/**
-		 * Gets Current PHP Version
-		 *
-		 * @return string
-		 */
-		public static function getPhpVersion()
-		{
-			return phpversion();
-		}
 
-		/**
-		 * Gets Server Name
-		 *
-		 * @return string
-		 */
-		public static function getServerName()
-		{
-			return $_SERVER['SERVER_NAME'];
-		}
 
-		/**
-		 * Gets Server Protocol
-		 *
-		 * @return string
-		 */
-		public static function getServerProtocol()
-		{
-			return $_SERVER['SERVER_PROTOCOL'];
-		}
-
-		/**
-		 * Gets the type of server e.g. apache
-		 *
-		 * @return string
-		 */
-		public static function getServerSoftware()
-		{
-			return $_SERVER['SERVER_SOFTWARE'];
-		}
 
 		/**
 		 * Gets total physical memory
@@ -244,25 +199,7 @@
 			// todo
 		}
 
-		/**
-		 * Gets the current DB Type of Yii2
-		 *
-		 * @return mixed
-		 */
-		public static function getDbType()
-		{
-			return Yii::$app->db->driverName;
-		}
 
-		/**
-		 * * Gets the current DB Version of Yii2
-		 *
-		 * @return mixed
-		 */
-		public static function getDbVersion()
-		{
-			return Yii::$app->db->pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
-		}
 
 		private static function getMemoryInfo()
 		{

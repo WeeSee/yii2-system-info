@@ -29,12 +29,6 @@
 		 */
 		public static function getKernelVersion();
 
-		/**
-		 * Gets the hostname
-		 *
-		 * @return string
-		 */
-		public static function getHostname();
 
 		/**
 		 * Gets Processor's Model
@@ -119,6 +113,13 @@
 		 * @return array|null
 		 */
 		public static function getTotalMemory();
+		
+		/**
+		 * Gets the hostname
+		 *
+		 * @return string
+		 */
+		public static function getHostname();
 
 		/**
 		 * Gets the current DB Type of Yii2
