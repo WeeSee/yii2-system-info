@@ -8,7 +8,7 @@
 
 	namespace kingzeus\systemInfo\os;
 
-	use abhimanyu\systemInfo\interfaces\InfoInterface;
+	use kingzeus\systemInfo\interfaces\InfoInterface;
 	use Exception;
 	use PDO;
 	use Yii;
