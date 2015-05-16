@@ -6,7 +6,7 @@
 	 * Time: 22:17
 	 */
 
-	namespace abhimanyu\systemInfo\interfaces;
+	namespace kingzeus\systemInfo\interfaces;
 
 	/**
 	 * Interface InfoInterface
