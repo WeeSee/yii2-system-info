@@ -9,7 +9,8 @@
 	namespace kingzeus\systemInfo;
 
 	use kingzeus\systemInfo\interfaces\InfoInterface;
-
+use kingzeus\systemInfo\os\Darwin;
+ 
 	class SystemInfo
 	{
 		/**
@@ -17,17 +18,19 @@
 		 */
 		public static function getInfo()
 		{
-			$name = strtolower(php_uname('s'));
-
-			if (strpos($name, 'windows') !== FALSE) {
-				return __NAMESPACE__ . '\os\Windows';
-			} elseif (strpos($name, 'linux') !== FALSE) {
-				return __NAMESPACE__ . '\os\Linux';
-			} elseif (strpos($name, 'darwin') !== FALSE) {
-				return __NAMESPACE__ . '\os\Darwin';
-			}
-			//
-
+		    switch(PHP_OS)
+		    {
+		        case 'Linux':
+		            break;
+		        case 'Darwin':
+		            return new Darwin();
+		            break;
+		        
+		        default:
+		            
+		            break;
+		    }
+		    
 
 			return NULL;
 		}

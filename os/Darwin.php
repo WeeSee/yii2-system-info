@@ -12,13 +12,13 @@
 	use Exception;
 	use PDO;
 	use Yii;
-
+ 
 	class Darwin extends Base
 	{
 		public function __construct()
 		{
-			if (!is_dir('/sys') || !is_dir('/proc'))
-				throw new Exception('Needs access to /proc and /sys to work.');
+//			if (!is_dir('/sys') || !is_dir('/proc'))
+//				throw new Exception('Needs access to /proc and /sys to work.');
 		}
 
 		/**
@@ -50,9 +50,56 @@
 		 */
 		public static function getCpuModel()
 		{
-			return Darwin::getCpuInfo()['Model'];
+			return self::getKeyFreeBSD('hw.model');
 		}
-
+		//确定执行文件位置 FreeBSD
+		
+		private static function findCommandFreeBSD($commandName)
+		{
+		
+		    $path = array('/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin', '/usr/local/sbin');
+		
+		    foreach($path as $p)
+		    {
+		
+		        if (@is_executable("$p/$commandName")) return "$p/$commandName";
+		
+		    }
+		
+		    return false;
+		
+		}
+		
+		//执行系统命令 FreeBSD
+		private static function doCommandFreeBSD($commandName, $args)
+		{
+		
+		    $buffer = "";
+		
+		    if (false === ($command = self::findCommandFreeBSD($commandName))) return false;
+		
+		    if ($fp = @popen("$command $args", 'r'))
+		    {
+		
+		        while (!@feof($fp))
+		        {
+		
+		            $buffer .= @fgets($fp, 4096);
+		
+		        }
+		
+		        return trim($buffer);
+		
+		    }
+		
+		    return false;
+		
+		}
+		// 取得参数值 FreeBSD
+        private static function getKeyFreeBSD($keyName)
+        {
+        	return self::doCommandFreeBSD('sysctl', "-n $keyName");
+        }
 		private static function getCpuInfo()
 		{
 			// File that has it
@@ -133,7 +180,7 @@
 		 */
 		public static function getCpuVendor()
 		{
-			return Darwin::getCpuInfo()['Vendor'];
+			return '';//Darwin::getCpuInfo()['Vendor'];
 		}
 
 		/**
