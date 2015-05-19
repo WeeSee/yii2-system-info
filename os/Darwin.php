@@ -15,11 +15,6 @@
  
 	class Darwin extends Base
 	{
-		public function __construct()
-		{
-//			if (!is_dir('/sys') || !is_dir('/proc'))
-//				throw new Exception('Needs access to /proc and /sys to work.');
-		}
 
 		/**
 		 * Gets the name of the Operating System
@@ -38,7 +33,7 @@
 		 */
 		public static function getKernelVersion()
 		{
-			return shell_exec('/usr/bin/lsb_release -ds');
+			return self::getKeyFreeBSD('kern.version');
 		}
 
 
@@ -100,78 +95,7 @@
         {
         	return self::doCommandFreeBSD('sysctl', "-n $keyName");
         }
-		private static function getCpuInfo()
-		{
-			// File that has it
-			$file = '/proc/cpuinfo';
 
-			// Not there?
-			if (!is_file($file) || !is_readable($file)) {
-				return 'Unknown';
-			}
-
-			/*
-			 * Get all info for all CPUs from the cpuinfo file
-			 */
-
-			// Get contents
-			$contents = trim(@file_get_contents($file));
-
-			// Lines
-			$lines = explode("\n", $contents);
-
-			// Holder for current CPU info
-			$cur_cpu = [];
-
-			// Go through lines in file
-			$num_lines = count($lines);
-
-			for ($i = 0; $i < $num_lines; $i++) {
-				// Info here
-				$line = explode(':', $lines[$i], 2);
-
-				if (!array_key_exists(1, $line))
-					continue;
-
-				$key   = trim($line[0]);
-				$value = trim($line[1]);
-
-
-				// What we want are MHZ, Vendor, and Model.
-				switch ($key) {
-
-					// CPU model
-					case 'model name':
-					case 'cpu':
-					case 'Processor':
-						$cur_cpu['Model'] = $value;
-						break;
-
-					// Speed in MHz
-					case 'cpu MHz':
-						$cur_cpu['MHz'] = $value;
-						break;
-
-					case 'Cpu0ClkTck': // Old sun boxes
-						$cur_cpu['MHz'] = hexdec($value) / 1000000;
-						break;
-
-					// Brand/vendor
-					case 'vendor_id':
-						$cur_cpu['Vendor'] = $value;
-						break;
-
-					// CPU Cores
-					case 'cpu cores':
-						$cur_cpu['Cores'] = $value;
-						break;
-				}
-
-			}
-
-			// Return them
-			return $cur_cpu;
-		}
 
 		/**
 		 * Gets Processor's Vendor
@@ -180,7 +104,7 @@
 		 */
 		public static function getCpuVendor()
 		{
-			return '';//Darwin::getCpuInfo()['Vendor'];
+			return self::getKeyFreeBSD('machdep.cpu.vendor');
 		}
 
 		/**
@@ -190,7 +114,7 @@
 		 */
 		public static function getCpuFreq()
 		{
-			return Darwin::getCpuInfo()['MHz'];
+			return self::getKeyFreeBSD('hw.cpufrequency')/1000000 . 'MHz';
 		}
 
 		/**
@@ -200,7 +124,7 @@
 		 */
 		public static function getCpuArchitecture()
 		{
-			return shell_exec('getconf LONG_BIT') . 'Bit';
+			return  '64Bit';
 		}
 
 		/**
@@ -210,7 +134,7 @@
 		 */
 		public static function getLoad()
 		{
-			return round(array_sum(sys_getloadavg()) / count(sys_getloadavg()), 2);
+			return self::getKeyFreeBSD('vm.loadavg');
 		}
 
 		/**
@@ -220,7 +144,7 @@
 		 */
 		public static function getUpTime()
 		{
-			return shell_exec('uptime -p');
+			return self::getKeyFreeBSD('kern.boottime');
 		}
 
 		/**
@@ -230,7 +154,7 @@
 		 */
 		public static function getCpuCores()
 		{
-			return Darwin::getCpuInfo()['Cores'];
+			return self::getKeyFreeBSD('machdep.cpu.core_count');
 		}
 
 
@@ -244,14 +168,10 @@
 		 */
 		public static function getTotalMemory()
 		{
-			// todo
+			return self::getKeyFreeBSD('hw.physmem');
 		}
 
 
 
-		private static function getMemoryInfo()
-		{
-			$data = @explode("\n", file_get_contents("/proc/meminfo"));
 
-		}
 	}

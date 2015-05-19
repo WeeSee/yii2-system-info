@@ -9,8 +9,11 @@
 	namespace kingzeus\systemInfo;
 
 	use kingzeus\systemInfo\interfaces\InfoInterface;
-use kingzeus\systemInfo\os\Darwin;
- 
+    use kingzeus\systemInfo\os\Darwin;
+use kingzeus\systemInfo\os\Linux;
+use kingzeus\systemInfo\os\kingzeus\systemInfo\os;
+use kingzeus\systemInfo\os\Windows;
+    
 	class SystemInfo
 	{
 		/**
@@ -18,14 +21,17 @@ use kingzeus\systemInfo\os\Darwin;
 		 */
 		public static function getInfo()
 		{
-		    switch(PHP_OS)
+		    
+		    switch( strtolower(PHP_OS))
 		    {
-		        case 'Linux':
+		        case 'linux':
+		            return new Linux();
 		            break;
-		        case 'Darwin':
+		        case 'darwin':
 		            return new Darwin();
 		            break;
-		        
+		        case 'winnt':
+		            return new Windows();
 		        default:
 		            
 		            break;
