@@ -6,13 +6,12 @@
 	 * Time: 22:19
 	 */
 
-	namespace kingzeus\systemInfo;
+	namespace icex\systemInfo;
 
-	use kingzeus\systemInfo\interfaces\InfoInterface;
-    use kingzeus\systemInfo\os\Darwin;
-use kingzeus\systemInfo\os\Linux;
-use kingzeus\systemInfo\os\kingzeus\systemInfo\os;
-use kingzeus\systemInfo\os\Windows;
+	use icex\systemInfo\interfaces\InfoInterface;
+    use icex\systemInfo\os\Darwin;
+    use icex\systemInfo\os\Linux;
+    use icex\systemInfo\os\Windows;
     
 	class SystemInfo
 	{

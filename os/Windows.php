@@ -6,12 +6,10 @@
 	 * Time: 22:24
 	 */
 
-	namespace kingzeus\systemInfo\os;
+	namespace icex\systemInfo\os;
 
-	use abhimanyu\systemInfo\interfaces\InfoInterface;
+	use icex\systemInfo\interfaces\InfoInterface;
 	use Exception;
-	use PDO;
-	use Yii;
 
 	class Windows extends Base
 	{
@@ -220,14 +218,6 @@
 
 			return $cores;
 		}
-
-
-
-
-
-
-
-
 
 		/**
 		 * Gets total physical memory

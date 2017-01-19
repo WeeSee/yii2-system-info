@@ -1,12 +1,12 @@
 <?php
 	/**
 	 * Created by PhpStorm.
-	 * User: Abhimanyu
-	 * Date: 15-02-2015
+	 * User: icex
+	 * Date: 15-01-2017
 	 * Time: 22:17
 	 */
 
-	namespace kingzeus\systemInfo\interfaces;
+	namespace icex\systemInfo\interfaces;
 
 	/**
 	 * Interface InfoInterface

@@ -6,12 +6,10 @@
 	 * Time: 00:06
 	 */
 
-	namespace kingzeus\systemInfo\os;
+	namespace icex\systemInfo\os;
 
-	use abhimanyu\systemInfo\interfaces\InfoInterface;
+	use icex\systemInfo\interfaces\InfoInterface;
 	use Exception;
-	use PDO;
-	use Yii;
 
 	class Linux extends Base
 	{

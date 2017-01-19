@@ -6,12 +6,10 @@
 	 * Time: 00:06
 	 */
 
-	namespace kingzeus\systemInfo\os;
+	namespace icex\systemInfo\os;
 
-	use kingzeus\systemInfo\interfaces\InfoInterface;
+	use icex\systemInfo\interfaces\InfoInterface;
 	use Exception;
-	use PDO;
-	use Yii;
  
 	class Darwin extends Base
 	{
@@ -156,8 +154,6 @@
 		{
 			return self::getKeyFreeBSD('machdep.cpu.core_count');
 		}
-
-
 
 
 

@@ -13,6 +13,6 @@
     "php": ">=5.4.0"
   },
   "autoload": {
-    "psr-4": {"kingzeus\\systemInfo\\": ""}
+    "psr-4": {"icex\\systemInfo\\": ""}
   }
 }
