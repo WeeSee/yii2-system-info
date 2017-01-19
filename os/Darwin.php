@@ -10,7 +10,9 @@
 
 	use icex\systemInfo\interfaces\InfoInterface;
 	use Exception;
- 
+	use PDO;
+	use Yii;
+
 	class Darwin extends Base
 	{
 
@@ -21,7 +23,7 @@
 		 */
 		public static function getOS()
 		{
-			return 'Darwin';
+			return 'MacOS';
 		}
 
 		/**
@@ -46,47 +48,47 @@
 			return self::getKeyFreeBSD('hw.model');
 		}
 		//确定执行文件位置 FreeBSD
-		
+
 		private static function findCommandFreeBSD($commandName)
 		{
-		
+
 		    $path = array('/bin', '/sbin', '/usr/bin', '/usr/sbin', '/usr/local/bin', '/usr/local/sbin');
-		
+
 		    foreach($path as $p)
 		    {
-		
+
 		        if (@is_executable("$p/$commandName")) return "$p/$commandName";
-		
+
 		    }
-		
+
 		    return false;
-		
+
 		}
-		
+
 		//执行系统命令 FreeBSD
 		private static function doCommandFreeBSD($commandName, $args)
 		{
-		
+
 		    $buffer = "";
-		
+
 		    if (false === ($command = self::findCommandFreeBSD($commandName))) return false;
-		
+
 		    if ($fp = @popen("$command $args", 'r'))
 		    {
-		
+
 		        while (!@feof($fp))
 		        {
-		
+
 		            $buffer .= @fgets($fp, 4096);
-		
+
 		        }
-		
+
 		        return trim($buffer);
-		
+
 		    }
-		
+
 		    return false;
-		
+
 		}
 		// 取得参数值 FreeBSD
         private static function getKeyFreeBSD($keyName)
@@ -157,14 +159,16 @@
 
 
 
+
+
 		/**
-		 * Gets total physical memory
+		 * Gets total physical memory in bytes
 		 *
 		 * @return array|null
 		 */
 		public static function getTotalMemory()
 		{
-			return self::getKeyFreeBSD('hw.physmem');
+            return self::getKeyFreeBSD('hw.memsize');
 		}
 
 
