@@ -1,17 +1,16 @@
 {
-  "name": "kingzeus/yii2-system-info",
+  "name": "icex/yii2-system-info",
   "description": "Information about the server",
   "license": "MIT",
   "authors": [
     {
-      "name": "Yefei Fan",
-      "email": "fyfcnc@hotmail.ocm",
-      "homepage": "https://github.com/kingzeus/yii2-system-info"
+      "name": "Bogdan Popa",
+      "email": "bogdan@pixelwattstudio.com",
+      "homepage": "https://github.com/icex/yii2-system-info"
     }
   ],
   "require": {
-    "php": ">=5.4.0",
-    "yiisoft/yii2": "*"
+    "php": ">=5.4.0"
   },
   "autoload": {
     "psr-4": {"kingzeus\\systemInfo\\": ""}
