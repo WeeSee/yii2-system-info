@@ -192,11 +192,10 @@ class Linux extends Base
     public static function getTotalMemory()
     {
         $memory = self::getMemoryInfo();
-        if (isset($memory[0]) {
+        if (isset($memory[0])) {
             preg_match('/\d+/', $memory[0], $matches);
 
             return $matches[0]*1024;
-
         }
 
         return $memory[0];
