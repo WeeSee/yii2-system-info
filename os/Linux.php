@@ -20,6 +20,27 @@ class Linux extends Base
     }
 
     /**
+     * Helper function that checks if a function is available in PHP
+     *
+     * @param $func
+     *
+     * @return bool
+     */
+    function isAvailable($func)
+    {
+        if (ini_get('safe_mode')) return false;
+        $disabled = ini_get('disable_functions');
+        if ($disabled) {
+            $disabled = explode(',', $disabled);
+            $disabled = array_map('trim', $disabled);
+
+            return !in_array($func, $disabled);
+        }
+
+        return true;
+    }
+
+    /**
      * Gets the name of the Operating System
      *
      * @return string
@@ -36,12 +57,10 @@ class Linux extends Base
      */
     public static function getKernelVersion()
     {
-        $cmd = '/usr/bin/lsb_release -ds';
-        try {
-            return shell_exec($cmd);
-        } catch (\Exception $e) {
-
+        if (self::isAvailable('shell_exec')) {
+            return shell_exec('/usr/bin/lsb_release -ds');
         }
+
     }
 
 
@@ -155,11 +174,8 @@ class Linux extends Base
      */
     public static function getCpuArchitecture()
     {
-        $cmd = 'getconf LONG_BIT';
-        try {
-            return shell_exec($cmd) . 'Bit';
-        } catch (\Exception $e) {
-
+        if (self::isAvailable('shell_exec')) {
+            return shell_exec('getconf LONG_BIT') . 'Bit';
         }
     }
 
@@ -180,11 +196,8 @@ class Linux extends Base
      */
     public static function getUpTime()
     {
-        $cmd = 'uptime -p';
-        try {
-            return shell_exec($cmd);
-        } catch (\Exception $e) {
-
+        if (self::isAvailable('shell_exec')) {
+            return shell_exec('uptime -p');
         }
     }
 
