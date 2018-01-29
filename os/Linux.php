@@ -36,7 +36,12 @@ class Linux extends Base
      */
     public static function getKernelVersion()
     {
-        return shell_exec('/usr/bin/lsb_release -ds');
+        $cmd = '/usr/bin/lsb_release -ds';
+        try {
+            return shell_exec($cmd);
+        } catch (\Exception $e) {
+
+        }
     }
 
 
@@ -150,7 +155,12 @@ class Linux extends Base
      */
     public static function getCpuArchitecture()
     {
-        return shell_exec('getconf LONG_BIT') . 'Bit';
+        $cmd = 'getconf LONG_BIT';
+        try {
+            return shell_exec($cmd) . 'Bit';
+        } catch (\Exception $e) {
+
+        }
     }
 
     /**
@@ -170,7 +180,12 @@ class Linux extends Base
      */
     public static function getUpTime()
     {
-        return shell_exec('uptime -p');
+        $cmd = 'uptime -p';
+        try {
+            return shell_exec($cmd);
+        } catch (\Exception $e) {
+
+        }
     }
 
     /**
@@ -195,7 +210,7 @@ class Linux extends Base
         if (isset($memory[0])) {
             preg_match('/\d+/', $memory[0], $matches);
 
-            return $matches[0]*1024;
+            return $matches[0] * 1024;
         }
 
         return $memory[0];
