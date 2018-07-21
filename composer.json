@@ -1,18 +1,11 @@
 {
-  "name": "icex/yii2-system-info",
+  "name": "weesee/yii2-system-info",
   "description": "Information about the server",
   "license": "MIT",
-  "authors": [
-    {
-      "name": "Bogdan Popa",
-      "email": "bogdan@pixelwattstudio.com",
-      "homepage": "https://github.com/icex/yii2-system-info"
-    }
-  ],
   "require": {
     "php": ">=5.4.0"
   },
   "autoload": {
-    "psr-4": {"icex\\systemInfo\\": ""}
+    "psr-4": {"weesee\\systemInfo\\": ""}
   }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace icex\systemInfo\interfaces;
+namespace weesee\systemInfo\interfaces;
 
 /**
  * Interface InfoInterface

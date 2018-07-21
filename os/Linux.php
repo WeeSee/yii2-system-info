@@ -6,9 +6,9 @@
  * Time: 00:06
  */
 
-namespace icex\systemInfo\os;
+namespace weesee\systemInfo\os;
 
-use icex\systemInfo\interfaces\InfoInterface;
+use weesee\systemInfo\interfaces\InfoInterface;
 use Exception;
 
 class Linux extends Base
@@ -26,7 +26,7 @@ class Linux extends Base
      *
      * @return bool
      */
-    function isAvailable($func)
+    protected static function isAvailable($func)
     {
         if (ini_get('safe_mode')) return false;
         $disabled = ini_get('disable_functions');

@@ -6,9 +6,9 @@
  * Time: 22:24
  */
 
-namespace icex\systemInfo\os;
+namespace weesee\systemInfo\os;
 
-use icex\systemInfo\interfaces\InfoInterface;
+use weesee\systemInfo\interfaces\InfoInterface;
 use Exception;
 
 class Windows extends Base
