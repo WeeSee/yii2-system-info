@@ -2,6 +2,7 @@ System/Server Information Helper
 --------------------------------
 
 Base on [abhi1693/yii2-system-info](https://github.com/abhi1693/yii2-system-info)
+Base on [icex/yii2-system-info](https://github.com/icex/yii2-system-info)
 
 
 
