@@ -1,11 +1,11 @@
 <?php
 
-namespace icex\systemInfo;
+namespace weesee\systemInfo;
 
-use icex\systemInfo\interfaces\InfoInterface;
-use icex\systemInfo\os\Darwin;
-use icex\systemInfo\os\Linux;
-use icex\systemInfo\os\Windows;
+use weesee\systemInfo\interfaces\InfoInterface;
+use weesee\systemInfo\os\Darwin;
+use weesee\systemInfo\os\Linux;
+use weesee\systemInfo\os\Windows;
 
 class SystemInfo
 {
