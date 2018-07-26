@@ -1,6 +1,6 @@
 {
   "name": "weesee/yii2-system-info",
-  "description": "Information about the server",
+  "description": "Yii2 extension for operating system information",
   "license": "MIT",
   "require": {
     "php": ">=5.4.0"
