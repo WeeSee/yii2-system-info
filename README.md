@@ -1,7 +1,8 @@
-Yii2 extension to get Operating System Systen Information
------------------------==================================
+# Yii2 extension to get Operating System Systen Information
 
-Provides information about your system/server. It automatically detects the type of system that you are using and provides you with appropriate information.
+Provides information about your system/server. 
+
+It automatically detects the type of system that you are using and provides you with appropriate information.
 
 
 ## Supported OS
@@ -48,19 +49,22 @@ $ php composer.phar update
 
 ## Usage
 
-Get all Data in your controller:
+Get all Data in your controller/action:
 ```php
 use weesee\systemInfo\models\SystemInfo;
 
-// Initialize  Information to work with the current operating system
-$sysInfo = new SystemInfo();
-// get system details
-$sysInfo->getInfo();
-// hand it over to view
-$this->render
+public function actionShowinfo()
+{
+    // Initialize  Information to work with the current operating system
+    $sysInfo = new SystemInfo();
+    // get system details as Yii2 model
+    $sysInfo->getInfo();
+    // hand it over to view
+    return $this->render('sysinfo',['sysInfo'=>$sysInfo]);
+}
 ```
 
-and display in the view with a model:
+and display in your view with a model:
 ```php
 echo DetailView::widget([
     'model' => $sysInfo,
