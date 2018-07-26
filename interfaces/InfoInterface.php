@@ -1,10 +1,11 @@
 <?php
+
 namespace weesee\systemInfo\interfaces;
 
 /**
  * Interface InfoInterface
  *
- * @package abhimanyu\interfaces
+ * @package weesee\interfaces
  */
 interface InfoInterface
 {

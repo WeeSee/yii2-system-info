@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Abhimanyu
- * Date: 15-02-2015
- * Time: 22:24
- */
 
 namespace weesee\systemInfo\os;
 

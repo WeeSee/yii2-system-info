@@ -1,18 +1,10 @@
 <?php
-	/**
-	 * Created by PhpStorm.
-	 * User: Abhimanyu
-	 * Date: 16-02-2015
-	 * Time: 00:06
-	 */
 
 	namespace weesee\systemInfo\os;
 
 	use weesee\systemInfo\interfaces\InfoInterface;
 	use Exception;
-	use PDO;
-	use Yii;
-
+	
 	class Darwin extends Base
 	{
 
