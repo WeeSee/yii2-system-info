@@ -1,19 +1,14 @@
-System/Server Information Helper
---------------------------------
+Yii2 extension to get Operating System Systen Information
+-----------------------==================================
 
-Based on [abhi1693/yii2-system-info](https://github.com/abhi1693/yii2-system-info)
-Based on [icex/yii2-system-info](https://github.com/icex/yii2-system-info)
-
+Provides information about your system/server. It automatically detects the type of system that you are using and provides you with appropriate information.
 
 
-Provides information about your system/server. It automatically detects the type of system that you are using and 
-provides you with appropriate information.
- 
 ## Supported OS
 
 - Windows
 - Linux
-- OSX(Darwin)
+- OSX (Darwin)
 
 ## Methods
 
@@ -40,7 +35,7 @@ Add System-Info to the require section of your **composer.json** file:
 ```php
 {
     "require": {
-        "weesee/yii2-system-info": "1.0.x"
+        "weesee/yii2-system-info": "~1.1.0"
     }
 }
 ```
@@ -53,12 +48,26 @@ $ php composer.phar update
 
 ## Usage
 
+Get all Data in your controller:
 ```php
-// Get the class to work with the current operating system
-$system = SystemInfo::getInfo();
+use weesee\systemInfo\models\SystemInfo;
 
-// Captain Obvious was here
-$system::getHostname();
+// Initialize  Information to work with the current operating system
+$sysInfo = new SystemInfo();
+// get system details
+$sysInfo->getInfo();
+// hand it over to view
+$this->render
+```
+
+and display in the view with a model:
+```php
+echo DetailView::widget([
+    'model' => $sysInfo,
+    'attributes' => $sysInfo->attributes(),
+]);
+
+echo $sysInfo->totalMemory;
 ```
 
 ## FAQ
@@ -77,3 +86,13 @@ Otherwise you will see this in your error log: `Fatal error: Class \'COM\' not f
 ## Contribution
 
 Contributing instructions are located in [CONTRIBUTING.md](CONTRIBUTING.md) file.
+
+## Author & Credits
+
+Author: weesee@web.de
+
+Credits to:
+* [abhi1693/yii2-system-info](https://github.com/abhi1693/yii2-system-info)
+* [icex/yii2-system-info](https://github.com/icex/yii2-system-info)
+
+(C) 2018 WeeSee
